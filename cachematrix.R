@@ -1,9 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-#function to create 4 sub functions returned as a list
-#sub functions are used to interact with scope variables
+#makeCacheMatrix is a function to create 4 sub functions returned 
+##as a list.
+##sub functions are used to interact with scope variables
 makeCacheMatrix <- function(x = matrix()) {
     #Declare inv as Null
     inv <- NULL
@@ -28,8 +25,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## cacheSolve returns the inverse of the previous functions matrix
+## If the inverse has already been set, it is collected from the cache
+## If the inverse has not been set, it calculates it
+## An inversed matrix is returned.
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     # if one has been set in cache
@@ -39,7 +38,8 @@ cacheSolve <- function(x, ...) {
     if(!is.null(m)) {
         message("getting cached data")
     } else {
-        ##Set inversion in cache, also allocate to m
+        ## Inverse not in cache!
+        ## Set inversion in cache, also allocate to m
         m <- x$setInv(x$get())
     }
     # make cache inversion available from this function
