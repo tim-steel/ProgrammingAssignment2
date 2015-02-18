@@ -16,7 +16,7 @@ makeCacheMatrix <- function(x = matrix()) {
     #allow retrival of matrix
     get <- function() x
     #enable setting inverse of x
-    setInv <- function() inv <<-solve(x)
+    setInv <- function(x) inv <<-solve(x)
     #enable retrival of inverse of x
     getInv <- function() inv
     
@@ -35,10 +35,8 @@ cacheSolve <- function(x, ...) {
     m <- x$getInv()
     if(!is.null(m)) {
         message("getting cached data")
-        return(m)
+    } else {
+        m <- x$setInv(x$get())
     }
-    data <- x$get()
-    m <- solve(data)
-    x$setInv(m)
-    m
+    return(m)
 }
